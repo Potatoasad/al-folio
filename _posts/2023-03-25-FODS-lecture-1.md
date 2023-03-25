@@ -41,14 +41,24 @@ Gaussian $\frac{1}{2\pi\sigma} \exp{(-\frac{(x-\mu)^2}{\sigma^2})}$, Bernoulli, 
 ## Expectation/Expected Value:
 
 Discrete:
+
+
 $$
 \mathbb{E}(X) = \sum_i \mathbb{P}(X=x_i) x_i
 $$
+
+
 Continuous
+
+
 $$
 \mathbb{E}(X) = \int p(x) x dx
 $$
+
+
 Gaussian mean value:
+
+
 $$
 \begin{align}
 \mathbb{E}(X) &= \int p(x) x dx \\
@@ -59,7 +69,6 @@ $$
 &\textrm{First term is 0 because x' is odd} \\
 &= 0  + \mu \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}} \exp(-\frac{(x')^2}{2}) dx'\\
 &= \mu \\
-
 \implies \mathbb{E}(X) &= \mu
 \end{align}
 $$
@@ -109,18 +118,22 @@ $$
 \end{align}
 $$
 
-> __Question: __Suppose random variables $x_1, x_2 ... x_n$ are independently identically distributed with variance $\sigma^2$. Let us take the average random variable:
+> __Question:__ Suppose random variables $x_1, x_2 ... x_n$ are independently identically distributed with variance $\sigma^2$. Let us take the average random variable:
 > $$
 > X_{avg} = \frac{1}{n}\sum^n_i X_i
 > $$
 > What is the variance of $X_{avg}$ ?
 >
 > __Answer:__ 
+>
+> 
 > $$
+> \begin{align*}
 > Var(X_{avg}) = Var(\frac{1}{n}\sum_i^n X_i) \\
 > Var(X_{avg}) = \frac{1}{n^2}\sum_i^n Var(X_i) \\
 > Var(X_{avg}) = \frac{1}{n^2} n\sigma^2 \\
 > Var(X_{avg}) = \frac{\sigma^2}{n}
+> \end{align*}
 > $$
 
 
@@ -301,10 +314,12 @@ $$
 $$
 
 $$
+\begin{align}
 \mathbb{E}(X^r) \leq \sum^{r_i \geq 2}_{r_1+r_2 + ...r_n = r}\frac{r!}{r_1!r_2!...r_n!} (\sigma^2)^{\textrm{\# of non zero } r_i \textrm{s}} r_1!r_2!..r_n! \\
 \mathbb{E}(X^r) \leq \sum^{r_i \geq 2}_{r_1+r_2 + ...r_n = r} (\sigma^2)^{\textrm{\# of non zero } \textrm{s}} r!\\
 \textrm{ SOME COMBINATORIAL TRICKERY LOOK AT THE BOOK} \\
 \mathbb{E}(X^r) \leq \frac{r!}{(r/2)!}2^{r/2}(n\sigma^2)^{r/2}
+\end{align}
 $$
 
 Hence we have:
@@ -430,29 +445,47 @@ The acceptance probability of the rejection sampling scheme goes to $0$ as $d \t
 ####  Solution
 
 Sample from a spherical gaussian in $\mathbb{R}^d$. 
+
+
 $$
 X \sim \mathcal{N}(0,\mathbb{I}) \\
 p = \prod_i \phi(x_i)dx_i
 $$
+
+
 Note that this distribution is rotationally symmetric, since it depends on a rotationally invariant scalar $X^T X$. 
 
+
+
 Note then that:
+
+
 $$
 Y = \frac{X}{||X||_2} \textrm{ is uniform on the sphere}
 $$
+
+
 Then let there be a positive scalar whose density function is:
+
+
 $$
 p(\rho) \propto \rho^{d-1}
 $$
+
+
 This must be because in $n$ dimensional polar coordinates:
+
+
 $$
 dx_1\wedge dx_2 \wedge ... \wedge dx_n = \rho^{d-1}d\rho \wedge d^{d-1}\Omega
 $$
+
+
 So we have the fact that you can get the uniform distribution by:
 
-1. Define $Y = \frac{X}{||X||_2}$
-2. Then get a random variable $\rho \in [0,1]$ with density $\rho^{d-1}$ 
-3. $U \sim \frac{\rho X}{||X||_2}$ is uniform in the unit ball!
+- Define $Y = \frac{X}{||X||_2}$
+- Then get a random variable $\rho \in [0,1]$ with density $\rho^{d-1}$
+-  $U \sim \frac{\rho X}{||X||_2}$ is uniform in the unit ball!
 
 ### Gaussian Annulus Theorem
 

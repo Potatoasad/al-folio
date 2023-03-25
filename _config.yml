@@ -219,6 +219,8 @@ plugins:
   - jekyll-twitter-plugin
   - jemoji
 
+plugins_dir: [jekyll-scholar]
+
 # Sitemap settings
 defaults:
   - scope:
@@ -250,7 +252,7 @@ jekyll-archives:
     tag: '/blog/tag/:name/'
     category: '/blog/category/:name/'
 
-display_tags: ['Statistics', 'GravitationalWaves', 'BlackHoles', 'MachineLearning'] # this tags will be dispalyed on the front page of your blog
+display_tags: ['Statistics', 'GravitationalWaves', 'BlackHoles', 'MachineLearning', 'DataScience'] # this tags will be dispalyed on the front page of your blog
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
