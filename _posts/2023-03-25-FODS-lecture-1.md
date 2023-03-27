@@ -253,9 +253,9 @@ Let $Y = X_1 + X_2 + ... + X_n$ where the $X_i$ are mutually independent __but n
 
 1. Centered: $\mathbb{E}(X_i) = 0$
 2. Variance Bound: $\mathbb{E}(X^2_i) \leq \sigma^2$
-3. Higher moment bound: $|\mathbb{E}(X^s_i)| \leq s!\sigma^2$ for upto $s=3,4,...,\lfloor\frac{a^2}{4n\sigma^2} \rfloor$
+3. Higher moment bound: $\|\mathbb{E}(X^s_i)\| \leq s!\sigma^2$ for upto $s=3,4,...,\lfloor\frac{a^2}{4n\sigma^2} \rfloor$
 
-If $a$ is __not too big: __$0 < a \leq \sqrt{2}n \sigma^2$ Then this variable's upper bound __decays like a gaussian__:
+If $a$ is __not too big:__  $0 < a \leq \sqrt{2}n \sigma^2$ Then this variable's upper bound __decays like a gaussian__:
 $$
 P(\|Y\| \geq a) \leq 3e^{-\frac{a^2}{12n\sigma^2}}
 $$
