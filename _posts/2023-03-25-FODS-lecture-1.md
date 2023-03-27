@@ -24,19 +24,25 @@ __Reference Textbooks__: Foundations of Data Science Avrim Blum, John Hopcroft (
 
 # High Dimensions
 
-What does $\mathbb{R}^d$ look like as $d \to \infty$ ? 
+Understanding high-dimensional spaces, such as $\mathbb{R}^d$, is important in various areas of machine learning and data analysis. As $d$ approaches infinity, the nature of the space can become difficult to comprehend.
 
-- e.g Images $d = 1024\times1024$
+For example, consider images with dimensions $1024 \times 1024$, where the dimensionality $d$ equals the number of pixels in the image.
 
-Use random vectors to sample this space and understand it:
+In order to explore and understand high-dimensional spaces, we can use random vectors to sample this space:
 
-$X$ is a random vector and then $|X|^2 = \sum^d_{i} x_i^2$, the norm is a sum of squares of random scalars
+Let $X$ be a random vector, where the squared norm (magnitude) of the vector $X$ is represented as $|X|^2 = \sum^d_{i} x_i^2$. The norm is essentially the sum of the squares of the random scalar components.
 
-Algos are often initialized randomly in $\mathbb{R}^n$
+Algorithms in machine learning and data analysis are often initialized randomly in $\mathbb{R}^n$, which makes understanding the behavior of random variables in high-dimensional spaces crucial.
 
-#### Random Variables: 
+#### Random Variables:
 
-Gaussian $\frac{1}{2\pi\sigma} \exp{(-\frac{(x-\mu)^2}{\sigma^2})}$, Bernoulli, etc
+There are various types of random variables, such as Gaussian, Bernoulli, etc. The Gaussian (normal) distribution is defined by the probability density function:
+$$
+\frac{1}{2\pi\sigma} \exp{(-\frac{(x-\mu)^2}{\sigma^2})}
+$$
+where $\mu$ is the mean and $\sigma$ is the standard deviation of the distribution.
+
+Other common random variables, like the Bernoulli distribution, describe different types of probabilistic behavior and are useful for understanding the properties and implications of high-dimensional spaces.
 
 ## Expectation/Expected Value:
 
