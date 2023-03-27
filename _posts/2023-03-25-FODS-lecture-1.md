@@ -30,16 +30,20 @@ For example, consider images with dimensions $1024 \times 1024$, where the dimen
 
 In order to explore and understand high-dimensional spaces, we can use random vectors to sample this space:
 
-Let $X$ be a random vector, where the squared norm (magnitude) of the vector $X$ is represented as $|X|^2 = \sum^d_{i} x_i^2$. The norm is essentially the sum of the squares of the random scalar components.
+Let $X$ be a random vector, where the squared norm (magnitude) of the vector $X$ is represented as $\|X\|^2 = \sum^d_{i} x_i^2$. The norm is essentially the sum of the squares of the random scalar components.
 
 Algorithms in machine learning and data analysis are often initialized randomly in $\mathbb{R}^n$, which makes understanding the behavior of random variables in high-dimensional spaces crucial.
 
 #### Random Variables:
 
 There are various types of random variables, such as Gaussian, Bernoulli, etc. The Gaussian (normal) distribution is defined by the probability density function:
+
+
 $$
 \frac{1}{2\pi\sigma} \exp{(-\frac{(x-\mu)^2}{\sigma^2})}
 $$
+
+
 where $\mu$ is the mean and $\sigma$ is the standard deviation of the distribution.
 
 Other common random variables, like the Bernoulli distribution, describe different types of probabilistic behavior and are useful for understanding the properties and implications of high-dimensional spaces.
@@ -228,7 +232,7 @@ $$
 
 Equivalently $\mathbb{E}(X) = \mu$,  $Var(X) = \sigma^2$ and $c = k\sigma$ then the inequality reads:
 $$
-P(|X-\mu| \geq k\sigma) \leq \frac{1}{k^2}
+P(\|X-\mu\| \geq k\sigma) \leq \frac{1}{k^2}
 $$
 
 > __Any RV is more than $k$ standard deviations away from its mean $1/k^2$ of the time__
@@ -240,7 +244,7 @@ $$
 Use Markov's inequality
 $$
 P((X-\mathbb{E}(X))^2 \geq c^2) \leq \frac{(X-\mathbb{E}(X))^2}{c^2} \\
-P(|X - \mathbb{E}(X)| \geq c) \leq P((X-\mathbb{E}(X))^2 \geq c^2) \leq \frac{Var(X)}{c^2} \\
+P(\|X - \mathbb{E}(X)\| \geq c) \leq P((X-\mathbb{E}(X))^2 \geq c^2) \leq \frac{Var(X)}{c^2} \\
 $$
 
 ### Master Tail Bound
@@ -253,18 +257,18 @@ Let $Y = X_1 + X_2 + ... + X_n$ where the $X_i$ are mutually independent __but n
 
 If $a$ is __not too big: __$0 < a \leq \sqrt{2}n \sigma^2$ Then this variable's upper bound __decays like a gaussian__:
 $$
-P(|Y| \geq a) \leq 3e^{-\frac{a^2}{12n\sigma^2}}
+P(\|Y\| \geq a) \leq 3e^{-\frac{a^2}{12n\sigma^2}}
 $$
 
 ##### Comments
 
 Can rewrite the conclusion in another way ($a = \sqrt{n} t$):
 $$
-P(\frac{|Y|}{\sqrt{n}} \geq t) \leq 3 e^{-\frac{t^2}{12\sigma^2}}
+P(\frac{\|Y\|}{\sqrt{n}} \geq t) \leq 3 e^{-\frac{t^2}{12\sigma^2}}
 $$
 Can also rewrite using a sample average $a = nb$:
 $$
-P(\frac{|Y|}{n} \geq b) \leq 3 e^{-\frac{nb^2}{12\sigma^2}}
+P(\frac{\|Y\|}{n} \geq b) \leq 3 e^{-\frac{nb^2}{12\sigma^2}}
 $$
 Comparison to the __Central Limit Theorum (CLT)__:
 
@@ -274,11 +278,11 @@ $$
 $$
 
 $$
-P(\frac{|Y|}{\sqrt{n}} \geq t) \leq e^{-\frac{t^2}{2\sigma^2}} \textrm{ by CLT} \\
+P(\frac{\|Y\|}{\sqrt{n}} \geq t) \leq e^{-\frac{t^2}{2\sigma^2}} \textrm{ by CLT} \\
 $$
 
 $$
-P(\frac{|Y|}{\sqrt{n}} \geq t) \leq 3e^{-\frac{t^2}{12\sigma^2}} \textrm{ by Master Tail Bound} \\
+P(\frac{\|Y\|}{\sqrt{n}} \geq t) \leq 3e^{-\frac{t^2}{12\sigma^2}} \textrm{ by Master Tail Bound} \\
 $$
 
 Takeaway: __Master Tail bound is a non-asymptotic, slightly weaker CLT-type bound__
@@ -286,8 +290,8 @@ Takeaway: __Master Tail bound is a non-asymptotic, slightly weaker CLT-type boun
 ### Proof of Master Tail Bound
 
 $$
-P(|Y| \geq a) = P(Y^r \geq a^r) \textrm{ for any positive integer r} \\
-P(|Y| \geq a) \leq \frac{\mathbb{E}(X^r)}{a^r}
+P(\|Y\| \geq a) = P(Y^r \geq a^r) \textrm{ for any positive integer r} \\
+P(\|Y\| \geq a) \leq \frac{\mathbb{E}(X^r)}{a^r}
 $$
 
 Use the multinomial expansion:
@@ -330,7 +334,7 @@ $$
 
 Hence we have:
 $$
-P(|Y|\geq a) \leq \frac{\mathbb{E}(X^r)}{a^r} \leq \frac{r!}{a^r(r/2)!}2^{r/2}(n\sigma^2)^{r/2} = g(r)
+P(\|Y\|\geq a) \leq \frac{\mathbb{E}(X^r)}{a^r} \leq \frac{r!}{a^r(r/2)!}2^{r/2}(n\sigma^2)^{r/2} = g(r)
 $$
 Let's find the $r$ that minimizes the right hand side, and gives us the best bound:
 $$
@@ -356,7 +360,7 @@ g(r) \leq e^{-\frac{a^2}{12n\sigma^2} + 1} \leq 3 e^{-\frac{a^2}{12n\sigma^2}}
 $$
 This gives us our bound:
 $$
-P(|Y|\geq a) \leq 3 e^{-\frac{a^2}{12n\sigma^2}}
+P(\|Y\|\geq a) \leq 3 e^{-\frac{a^2}{12n\sigma^2}}
 $$
 
 ### Applying the tail bound
@@ -365,13 +369,13 @@ Assume $X_i \sim Bernoulli(p)$, then what is the tail bound on $Y = \sum^n_i X_i
 
 For any $c \in [0,1]$ whe have:
 $$
-P(|\frac{Y}{n} - p| \geq \sqrt2 c p (1-p)) \leq 3 e^{-\frac{np(1-p)c^2}{6}}
+P(\|\frac{Y}{n} - p\| \geq \sqrt2 c p (1-p)) \leq 3 e^{-\frac{np(1-p)c^2}{6}}
 $$
 Proof:
 
 Let $Y_i = X_i - p$ then $\mathbb{E}(Y_i) = 0$  and $Var(Y_i) = Var(X_i) = \mathbb{E}(Y_i^2)= p(1-p) $
 $$
-\mathbb{E}(Y_i^s) = |p(1-p)^s + (1-p)(-p)^s| \leq p(1-p)^s + (1-p)(-p)^s \\
+\mathbb{E}(Y_i^s) = \|p(1-p)^s + (1-p)(-p)^s\| \leq p(1-p)^s + (1-p)(-p)^s \\
 \mathbb{E}(Y_i^s) \leq p(1-p)^2 + (1-p)(p)^2 \\
 \mathbb{E}(Y_i^s) \leq \frac{p(1-p)}{3} \\
 $$
@@ -385,7 +389,7 @@ Assume $X_i \sim Bernoulli(p)$, then what is the tail bound on $Y = \sum^n_i X_i
 
 For any $c \in [0,1]$ whe have:
 $$
-P(|\frac{Y}{n} - p| \geq \sqrt2 c p (1-p)) \leq 3 e^{-\frac{np(1-p)c^2}{6}}
+P(\|\frac{Y}{n} - p\| \geq \sqrt2 c p (1-p)) \leq 3 e^{-\frac{np(1-p)c^2}{6}}
 $$
 
 > __remark__: How sharp is this estimate?
@@ -467,7 +471,7 @@ Note then that:
 
 
 $$
-Y = \frac{X}{||X||_2} \textrm{ is uniform on the sphere}
+Y = \frac{X}{\|X\|_2} \textrm{ is uniform on the sphere}
 $$
 
 
@@ -489,15 +493,15 @@ $$
 
 So we have the fact that you can get the uniform distribution by:
 
-- Define $Y = \frac{X}{||X||_2}$
+- Define $Y = \frac{X}{\|X\|_2}$
 - Then get a random variable $\rho \in [0,1]$ with density $\rho^{d-1}$
--  $U \sim \frac{\rho X}{||X||_2}$ is uniform in the unit ball!
+-  $U \sim \frac{\rho X}{\|X\|_2}$ is uniform in the unit ball!
 
 ### Gaussian Annulus Theorem
 
 Let $X \sim \mathcal{N}(0,I)$ For any $\beta \in [0,\sqrt{d}]$:
 $$
-P(|\ |X|_2 - \sqrt{d}\ | \geq \beta) \leq 3e^{-\frac{\beta^2}{96}}
+P(|\ \|X\|_2 - \sqrt{d}\ | \geq \beta) \leq 3e^{-\frac{\beta^2}{96}}
 $$
 We can prove this using the master tail bound. Let there be $d$ independent random variables $x_i^2 - 1$ which are distributed as $\chi^2$ distributions. Then we define 
 $$
@@ -505,18 +509,18 @@ Y = \sum^d_i (x_i^2-1)
 $$
 Hence the bound above just becomes:
 $$
-P(|\ |X|_2 - \sqrt{d}\ | \geq \beta) = P(|\ |X|_2^2 - d\ | \geq \beta^2) =  P(|\ Y\ | \geq \beta^2)
+P(|\ \|X\|_2 - \sqrt{d}\ | \geq \beta) = P(|\ \|X\|_2^2 - d\ | \geq \beta^2) =  P(\|Y\| \geq \beta^2)
 $$
 Now we must have that:
 $$
 \mathbb{E}(x^2_i - 1) = 0 \\
 \mathbb{E}((x^2_i - 1)^2) \leq \sigma^2 \\
-|\mathbb{E}((x^2_i - 1)^s)| \leq \sigma^2 s! \\
-\implies P(|Y| \geq \beta^2) \leq 3e^{-\frac{\beta^4}{12d\sigma^2}}
+\|\mathbb{E}((x^2_i - 1)^s)\| \leq \sigma^2 s! \\
+\implies P(\|Y\| \geq \beta^2) \leq 3e^{-\frac{\beta^4}{12d\sigma^2}}
 $$
 To show the above we can do the following bounding process:
 $$
-|\mathbb{E}((x^2_i - 1)^s)| \leq \mathbb{E}(|(x^2_i - 1)^s|) \leq  \mathbb{E}(1 + x^{2s}_i) = 1 + \mathbb{E}(x^{2s}_i) \leq 2^s s!
+\|\mathbb{E}((x^2_i - 1)^s)\| \leq \mathbb{E}(\|(x^2_i - 1)^s\|) \leq  \mathbb{E}(1 + x^{2s}_i) = 1 + \mathbb{E}(x^{2s}_i) \leq 2^s s!
 $$
 Apply master tail bound to $\frac{Y_i}{2}$
 
